@@ -13,3 +13,7 @@ The coffee.
 Who is reponsible for this crappy piece of software ?
 =====================================================
 The Orga'IF team, at BdE INSA de Lyon. See the commiter list for contacts :-)
+
+How can I read your diagrams ?
+==============================
+You can't, its written in french. However, we use BoUML.
