@@ -1,0 +1,11 @@
+window_sizes 1350 787 337 1007 593 120
+diagrams
+  active  classdiagram_ref 128012 // DomainModel
+    1124 843 110 4 84 0
+end
+show_stereotypes
+selected class_ref 129036 // Voyage
+open
+  classview_ref 128012 // ClassView
+end
+end

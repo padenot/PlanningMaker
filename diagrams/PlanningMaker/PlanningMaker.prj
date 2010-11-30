@@ -1,0 +1,548 @@
+format 74
+"PlanningMaker"
+  revision 1
+  modified_by 12 "paul"
+
+
+  
+  // class settings
+  default_attribute_visibility private default_relation_visibility private default_operation_visibility public
+  //class diagram settings
+  draw_all_relations yes hide_attributes no hide_operations no hide_getset_operations no show_members_full_definition no show_members_visibility no show_members_stereotype no show_members_context no show_members_multiplicity no show_members_initialization no show_attribute_modifiers no member_max_width 127 show_parameter_dir yes show_parameter_name yes package_name_in_tab no class_drawing_mode natural drawing_language uml show_context_mode no auto_label_position yes show_relation_modifiers no show_relation_visibility no show_infonote no shadow yes show_stereotype_properties no
+  //use case diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes class_drawing_mode actor shadow yes show_stereotype_properties no
+  //sequence diagram settings
+  show_full_operations_definition no write_horizontally yes class_drawing_mode natural drawing_language uml draw_all_relations yes shadow yes show_stereotype_properties no show_class_context_mode no show_msg_context_mode no
+  //collaboration diagram settings
+  show_full_operations_definition no show_hierarchical_rank no write_horizontally yes drawing_language uml package_name_in_tab no show_context no show_msg_context no draw_all_relations yes shadow yes show_stereotype_properties no
+  //object diagram settings
+   write_horizontally yes package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes show_stereotype_properties no
+  //component diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no show_stereotype_properties no
+  //deployment diagram settings
+  package_name_in_tab no show_context no write_horizontally yes auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no show_stereotype_properties no
+  //state diagram settings
+  package_name_in_tab no show_context no auto_label_position yes write_trans_label_horizontally yes show_trans_definition no draw_all_relations yes shadow yes
+  show_activities yes region_horizontally yes drawing_language uml show_stereotype_properties no
+  //activity diagram settings
+  package_name_in_tab no show_context no show_opaque_action_definition no auto_label_position yes write_flow_label_horizontally no draw_all_relations yes shadow yes
+  show_infonote yes drawing_language uml show_stereotype_properties no
+  
+  class_color yellow duration_color transparent continuation_color gray note_color blue fragment_color transparent subject_color transparent usecase_color yellow package_color transparent component_color green artifact_color green deploymentnode_color gray state_color yellow stateaction_color transparent activity_color transparent activityregion_color transparent activitypartition_color transparent activityaction_color transparent parameterpin_color white 
+  font_size 9
+  diagram_format A3
+
+  mark_for_import
+  
+  classview 128012 "ClassView"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    classdiagram 128012 "DomainModel"
+      draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 128012 "Orga"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128012 // departement_ (<association>)
+	relation 128012 ----
+	  stereotype "vector"
+	  a role_name "departement_" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128012 // departement_ (<association>)
+	  b role_name "etudiants_" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128140 // etudiants_ (<association>)
+      end
+
+      classrelation 128396 // equipe_ (<association>)
+	relation_ref 128140 // <association>
+      end
+
+      classrelation 128524 // resp_ (<association>)
+	relation 128268 ----
+	  a role_name "resp_" multiplicity "1" volatile private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128524 // resp_ (<association>)
+	  b role_name "_resp" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128652 // _resp (<association>)
+      end
+
+      classrelation 128908 // categorie_ (<association>)
+	relation_ref 128396 // <association>
+      end
+
+      classrelation 129164 // emploiDuTemps (<association>)
+	relation_ref 128524 // <association>
+      end
+
+      classrelation 130700 // groupeDeTaches (<association>)
+	relation_ref 129292 // <association>
+      end
+
+      classrelation 131724 // conducteur_ (<association>)
+	relation_ref 129804 // <association>
+      end
+
+      classrelation 131852 // transporte_ (<association>)
+	relation 129932 ----
+	  a role_name "transporte_" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 131852 // transporte_ (<association>)
+	  b role_name "_transporte" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 131980 // _transporte (<association>)
+      end
+
+      classrelation 133260 // commentaires_ (<association>)
+	relation_ref 130572 // <association>
+      end
+    end
+
+    class 128140 "Departement"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128140 // etudiants_ (<association>)
+	relation_ref 128012 // <association>
+      end
+    end
+
+    class 128268 "Equipe"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128268 // membres_ (<association>)
+	relation 128140 ----
+	  stereotype "vector"
+	  a role_name "membres_" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${stereotype}<${type} *> ${name}${value};
+"
+	    classrelation_ref 128268 // membres_ (<association>)
+	  b role_name "equipe_" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128396 // equipe_ (<association>)
+      end
+
+      classrelation 128652 // _resp (<association>)
+	relation_ref 128268 // <association>
+      end
+
+      classrelation 130956 // groupeDeTaches_ (<association>)
+	relation_ref 129420 // <association>
+      end
+    end
+
+    class 128396 "Categorie"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128780 // orga_ (<association>)
+	relation 128396 ----
+	  stereotype "vector"
+	  a role_name "orga_" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128780 // orga_ (<association>)
+	  b role_name "categorie_" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128908 // categorie_ (<association>)
+      end
+    end
+
+    class 128524 "Creneau"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129036 // orgas_ (<association>)
+	relation 128524 ----
+	  stereotype "vector"
+	  a role_name "orgas_" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129036 // orgas_ (<association>)
+	  b role_name "emploiDuTemps" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129164 // emploiDuTemps (<association>)
+      end
+
+      classrelation 129420 // horaire_ (<association>)
+	relation_ref 128652 // <association>
+      end
+
+      classrelation 129676 // lieu_ (<association>)
+	relation_ref 128780 // <association>
+      end
+
+    end
+
+    class 128652 "Tache"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129292 // date_ (<association>)
+	relation 128652 ----
+	  stereotype "vector"
+	  a role_name "date_" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129292 // date_ (<association>)
+	  b role_name "horaire_" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129420 // horaire_ (<association>)
+      end
+
+      classrelation 130444 // groupe_ (<association>)
+	relation_ref 129164 // <association>
+      end
+
+      classrelation 132620 // materiel_ (<association>)
+	relation 130316 ----
+	  stereotype "vector"
+	  a role_name "materiel_" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 132620 // materiel_ (<association>)
+	  b role_name "tache" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 132748 // tache (<association>)
+      end
+
+      classrelation 133388 // commentaires_ (<association>)
+	relation 130700 ----
+	  stereotype "vector"
+	  a role_name "commentaires_" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 133388 // commentaires_ (<association>)
+	  b role_name "tache_" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 133516 // tache_ (<association>)
+      end
+    end
+
+    class 128780 "Lieu"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129548 // _crenaux (<association>)
+	relation 128780 ----
+	  a role_name "_crenaux" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129548 // _crenaux (<association>)
+	  b role_name "lieu_" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129676 // lieu_ (<association>)
+      end
+
+      classrelation 130060 // <association>
+	relation 129036 ----
+	  a role_name "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 130060 // <association>
+	  b role_name "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 130188 // <association>
+      end
+
+      classrelation 131212 // <association>
+	relation_ref 129548 // <association>
+      end
+
+      classrelation 131468 // voyages_ (<association>)
+	relation_ref 129676 // <association>
+      end
+    end
+
+    class 128908 "GroupeDeTaches"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 130188 // <association>
+	relation_ref 129036 // <association>
+      end
+
+      classrelation 130316 // taches_ (<association>)
+	relation 129164 ----
+	  stereotype "vector"
+	  a role_name "taches_" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 130316 // taches_ (<association>)
+	  b role_name "groupe_" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 130444 // groupe_ (<association>)
+      end
+
+      classrelation 130572 // orgas_ (<association>)
+	relation 129292 ----
+	  stereotype "vector"
+	  a role_name "orgas_" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 130572 // orgas_ (<association>)
+	  b role_name "groupeDeTaches" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 130700 // groupeDeTaches (<association>)
+      end
+
+      classrelation 130828 // equipe_ (<association>)
+	relation 129420 ----
+	  stereotype "vector"
+	  a role_name "equipe_" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 130828 // equipe_ (<association>)
+	  b role_name "groupeDeTaches_" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 130956 // groupeDeTaches_ (<association>)
+      end
+    end
+
+    class 129036 "Voyage"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 131084 // lieuDepart_ (<association>)
+	relation 129548 ----
+	  a role_name "lieuDepart_" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 131084 // lieuDepart_ (<association>)
+	  b role_name "" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 131212 // <association>
+      end
+
+      classrelation 131340 // lieuArrivee_ (<association>)
+	relation 129676 ----
+	  a role_name "lieuArrivee_" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 131340 // lieuArrivee_ (<association>)
+	  b role_name "voyages_" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 131468 // voyages_ (<association>)
+      end
+
+      classrelation 131596 // conducteur_ (<association>)
+	relation 129804 ----
+	  a role_name "conducteur_" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 131596 // conducteur_ (<association>)
+	  b role_name "conducteur_" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 131724 // conducteur_ (<association>)
+      end
+
+      classrelation 131980 // _transporte (<association>)
+	relation_ref 129932 // <association>
+      end
+
+      classrelation 132108 // vehiculeUtilise_ (<association>)
+	relation 130060 ----
+	  a role_name "vehiculeUtilise_" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 132108 // vehiculeUtilise_ (<association>)
+	  b role_name "voyagesEffectue_" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 132236 // voyagesEffectue_ (<association>)
+      end
+    end
+
+    class 129164 "Vehicule"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 132236 // voyagesEffectue_ (<association>)
+	relation_ref 130060 // <association>
+      end
+
+      classrelation 132876 // transporte_ (<association>)
+	relation 130444 ----
+	  a role_name "transporte_" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 132876 // transporte_ (<association>)
+	  b role_name "estTransporte" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 133004 // estTransporte (<association>)
+      end
+    end
+
+    class 129292 "Materiel"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 132748 // tache (<association>)
+	relation_ref 130316 // <association>
+      end
+
+      classrelation 133004 // estTransporte (<association>)
+	relation_ref 130444 // <association>
+      end
+    end
+
+    class 129420 "Commentaire"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 133132 // auteur_ (<association>)
+	relation 130572 ----
+	  stereotype "vector"
+	  a role_name "auteur_" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 133132 // auteur_ (<association>)
+	  b role_name "commentaires_" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 133260 // commentaires_ (<association>)
+      end
+
+      classrelation 133516 // tache_ (<association>)
+	relation_ref 130700 // <association>
+      end
+    end
+  end
+end
