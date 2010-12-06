@@ -6,6 +6,7 @@
 #include <QxMemLeak.h>
 
 #include <QDialog>
+#include <QtSql>
 
 namespace Ui {
     class OrgaListDialog;
@@ -21,6 +22,10 @@ public:
 
 private:
     Ui::OrgaListDialog *ui;
+    QSqlTableModel *qsqm;
+
+private slots:
+    void on_pushButton_clicked();
 };
 
 #endif // ORGALISTDIALOG_H
