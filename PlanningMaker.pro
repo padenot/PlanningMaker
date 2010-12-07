@@ -29,13 +29,15 @@ DESTDIR = ./build/release
 SOURCES +=  ./src/main.cpp\
             ./src/mainwindow.cpp \
     ./src/orga.cpp \
-    ./src/orgalistdialog.cpp
+    ./src/orgalistdialog.cpp \
+./src/departement.cpp
 
 HEADERS  += ./include/mainwindow.h \
             ./include/precompiled.h \
             ./include/export.h \
     ./include/orga.h \
-    ./include/orgalistdialog.h
+    ./include/orgalistdialog.h\
+./include/departement.h
 
 FORMS    += ./ui/mainwindow.ui \
     ./ui/orgalistdialog.ui

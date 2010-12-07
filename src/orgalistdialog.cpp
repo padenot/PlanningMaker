@@ -11,7 +11,7 @@ OrgaListDialog::OrgaListDialog(QWidget *parent) :
 ui->setupUi(this);
 
 qx::dao::create_table<Orga>();
-
+qx::dao::create_table<Departement>();
 
 QSqlDatabase db =  QSqlDatabase::addDatabase("QSQLITE");
 db.setHostName("localhost");
@@ -38,8 +38,13 @@ void OrgaListDialog::on_pushButton_clicked() //Ajoute 2 orgas et rafraichit le m
 {
     QSqlError daoError;
 
-    Orga_ptr jeanCapelle = Orga_ptr(new Orga); jeanCapelle->becomeJeanCapelle();daoError = qx::dao::insert(jeanCapelle);
-    Orga_ptr michelRoti = Orga_ptr(new Orga); michelRoti->becomeMichelRoti(); daoError = qx::dao::insert(michelRoti);
+    Departement_ptr info = Departement_ptr(new Departement); info->becomeIf();daoError = qx::dao::insert(info);
+    Orga_ptr jeanCapelle = Orga_ptr(new Orga); jeanCapelle->becomeJeanCapelle();
+    jeanCapelle->m_departement = info;
+    daoError = qx::dao::insert(jeanCapelle);
+    Orga_ptr michelRoti = Orga_ptr(new Orga); michelRoti->becomeMichelRoti();
+michelRoti->m_departement = info;
+    daoError = qx::dao::insert(michelRoti);
     qsqm->select();
 
 

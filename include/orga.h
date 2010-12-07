@@ -1,7 +1,8 @@
-#ifndef _QX_PMNG_CLASS_H_
-#define _QX_PMNG_CLASS_H_
+#ifndef _QX_PMNG_ORGA_H_
+#define _QX_PMNG_ORGA_H_
 #include <QDate>
 #include <QPixmap>
+#include "departement.h"
 
 
 class QX_PMNG_DLL_EXPORT Orga
@@ -23,7 +24,7 @@ public:
    QString      m_email;
    //TODO : Categorie - Equipe
    int          m_annee;
-   //TODO: Departement
+   Departement_ptr m_departement;
    bool         m_permis;
    int          m_statut;
    QString      m_notes;
