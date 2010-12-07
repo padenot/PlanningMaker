@@ -3,6 +3,7 @@
 #include <QDate>
 #include <QPixmap>
 #include "departement.h"
+#include "equipe.h"
 
 
 class QX_PMNG_DLL_EXPORT Orga
@@ -22,7 +23,8 @@ public:
    QString      m_telephone;
    QString      m_operateur;
    QString      m_email;
-   //TODO : Categorie - Equipe
+   Equipe_ptr   m_equipe;
+   //TODO : Categorie
    int          m_annee;
    Departement_ptr m_departement;
    bool         m_permis;
