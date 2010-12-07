@@ -3,7 +3,13 @@
 #include <QDate>
 #include <QPixmap>
 #include "departement.h"
+
+class QX_PMNG_DLL_EXPORT Orga;
+typedef boost::shared_ptr<Orga> Orga_ptr;
+typedef std::vector<Orga_ptr> List_orga;
+
 #include "equipe.h"
+
 
 
 class QX_PMNG_DLL_EXPORT Orga
@@ -43,7 +49,7 @@ public:
 
 QX_REGISTER_HPP_QX_PMNG(Orga, qx::trait::no_base_class_defined, 0)
 
-typedef boost::shared_ptr<Orga> Orga_ptr;
-typedef std::vector<Orga_ptr> List_orga;
+        typedef boost::shared_ptr<Orga> Orga_ptr;
+        typedef std::vector<Orga_ptr> List_orga;
 
 #endif

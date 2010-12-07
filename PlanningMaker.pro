@@ -31,7 +31,8 @@ SOURCES +=  ./src/main.cpp\
     ./src/orga.cpp \
     ./src/orgalistdialog.cpp \
 ./src/departement.cpp \
-./src/equipe.cpp
+./src/equipe.cpp \
+./src/categorie.cpp
 
 HEADERS  += ./include/mainwindow.h \
             ./include/precompiled.h \
@@ -39,7 +40,8 @@ HEADERS  += ./include/mainwindow.h \
     ./include/orga.h \
     ./include/orgalistdialog.h\
 ./include/departement.h \
-./include/equipe.h
+./include/equipe.h \
+./include/categorie.h
 
 FORMS    += ./ui/mainwindow.ui \
     ./ui/orgalistdialog.ui
