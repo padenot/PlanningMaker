@@ -1,6 +1,6 @@
 #include "../include/precompiled.h"
 
-#include "equipe.h"
+#include "../include/equipe.h"
 
 #include <QxMemLeak.h>
 

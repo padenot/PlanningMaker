@@ -1,6 +1,11 @@
 #ifndef _QX_PMNG_EQUIPE_H_
 #define _QX_PMNG_EQUIPE_H_
 
+class QX_PMNG_DLL_EXPORT Equipe;
+
+typedef boost::shared_ptr<Equipe> Equipe_ptr;
+typedef std::vector<Equipe_ptr> List_equipe;
+
 #include "orga.h"
 
 class QX_PMNG_DLL_EXPORT Equipe
@@ -23,7 +28,6 @@ public:
 
 QX_REGISTER_HPP_QX_PMNG(Equipe, qx::trait::no_base_class_defined, 0)
 
-typedef boost::shared_ptr<Equipe> Equipe_ptr;
-typedef std::vector<Equipe_ptr> List_equipe;
+
 
 #endif

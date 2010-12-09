@@ -27,7 +27,7 @@ template <> void register_class(QxClass<Orga> & t)
    t.data(& Orga::m_motivation, "motivation");
    t.data(& Orga::m_celibataire, "celibataire");
    t.relationManyToOne(& Orga::m_departement, "departement_id");
-   t.relationManyToOne(& Orga::m_equipe, "equipe_id");
+   //t.relationManyToOne(& Orga::m_equipe, "equipe_id");
 
 
 }}

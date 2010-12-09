@@ -1,7 +1,7 @@
 #ifndef _QX_PMNG_CATEGORIE_H_
 #define _QX_PMNG_CATEGORIE_H_
 
-#include "orga.h"
+
 
 class QX_PMNG_DLL_EXPORT Categorie
 {

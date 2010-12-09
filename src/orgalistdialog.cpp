@@ -1,6 +1,7 @@
 #include "orgalistdialog.h"
 #include "ui_orgalistdialog.h"
 #include "orga.h"
+#include "tache.h"
 #include <QtDebug>
 
 
@@ -12,6 +13,27 @@ ui->setupUi(this);
 
 qx::dao::create_table<Orga>();
 qx::dao::create_table<Departement>();
+qx::dao::create_table<Groupetaches>();
+qx::dao::create_table<Tache>();
+qx::dao::create_table<Materiel>();
+qx::dao::create_table<Lieu>();
+qx::dao::create_table<Categorie>();
+qx::dao::create_table<Equipe>();
+
+
+Tache_ptr tac = Tache_ptr(new Tache);
+
+Materiel_ptr ma = Materiel_ptr(new Materiel);
+
+QSqlError daoError;
+
+daoError = qx::dao::insert(tac);
+daoError = qx::dao::insert(ma);
+
+tac->m_materielX.insert(ma->m_id,ma);
+daoError = qx::dao::save_with_relation("list_materiel", tac);
+
+
 
 QSqlDatabase db =  QSqlDatabase::addDatabase("QSQLITE");
 db.setHostName("localhost");

@@ -1,6 +1,6 @@
 #include "../include/precompiled.h"
 
-#include "categorie.h"
+#include "../include/categorie.h"
 
 #include <QxMemLeak.h>
 

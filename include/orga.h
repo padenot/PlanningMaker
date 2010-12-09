@@ -9,6 +9,8 @@ typedef boost::shared_ptr<Orga> Orga_ptr;
 typedef std::vector<Orga_ptr> List_orga;
 
 #include "equipe.h"
+#include "categorie.h"
+
 
 
 
@@ -29,8 +31,8 @@ public:
    QString      m_telephone;
    QString      m_operateur;
    QString      m_email;
-   Equipe_ptr   m_equipe;
-   //TODO : Categorie
+  Equipe_ptr   m_equipe;
+   Categorie_ptr m_categorie;
    int          m_annee;
    Departement_ptr m_departement;
    bool         m_permis;
