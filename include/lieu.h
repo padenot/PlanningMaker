@@ -24,7 +24,7 @@ public:
 
 QX_REGISTER_HPP_QX_PMNG(Lieu, qx::trait::no_base_class_defined, 0)
 
-typedef boost::shared_ptr<Lieu> Lieu_ptr;
-typedef std::vector<Lieu_ptr> List_lieu;
+        typedef QSharedPointer<Lieu> Lieu_ptr;
+        typedef qx::QxCollection<long, Lieu_ptr> list_lieu;
 
 #endif

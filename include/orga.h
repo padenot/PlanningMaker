@@ -5,8 +5,8 @@
 #include "departement.h"
 
 class QX_PMNG_DLL_EXPORT Orga;
-typedef boost::shared_ptr<Orga> Orga_ptr;
-typedef std::vector<Orga_ptr> List_orga;
+typedef QSharedPointer<Orga> Orga_ptr;
+typedef qx::QxCollection<long, Orga_ptr> list_orga;
 
 #include "equipe.h"
 #include "categorie.h"
@@ -51,7 +51,6 @@ public:
 
 QX_REGISTER_HPP_QX_PMNG(Orga, qx::trait::no_base_class_defined, 0)
 
-        typedef boost::shared_ptr<Orga> Orga_ptr;
-        typedef std::vector<Orga_ptr> List_orga;
+
 
 #endif

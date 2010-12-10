@@ -19,7 +19,10 @@ template <> void register_class(QxClass<Tache> & t)
    t.data(& Tache::m_consignesSecu, "consignesSecu");
    t.data(& Tache::m_confiance, "confiance");
    t.data(& Tache::m_priorite, "priorite");
-   t.data(& Tache::m_plagesHoraires, "plagesHoraires");
+  t.data(& Tache::m_plagesHoraires, "plagesHoraires");
+  t.data(& Tache::m_respNecessaire, "respNecessaire");
+  t.data(& Tache::m_orgaNecessairesParCategorie, "orgaNecessairesParCategorie");
+  t.data(& Tache::m_orgaNecessairesParEquipe, "orgaNecessairesParEquipe");
 
    t.relationManyToOne(& Tache::m_groupetaches, "groupetaches_id");
     t.relationManyToOne(& Tache::m_lieu, "lieu_id");

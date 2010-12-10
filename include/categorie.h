@@ -23,7 +23,7 @@ public:
 
 QX_REGISTER_HPP_QX_PMNG(Categorie, qx::trait::no_base_class_defined, 0)
 
-typedef boost::shared_ptr<Categorie> Categorie_ptr;
-typedef std::vector<Categorie_ptr> List_categorie;
+        typedef QSharedPointer<Categorie> Categorie_ptr;
+        typedef qx::QxCollection<long, Categorie_ptr> list_categorie;
 
 #endif

@@ -3,8 +3,8 @@
 
 class QX_PMNG_DLL_EXPORT Materiel;
 
-typedef boost::shared_ptr<Materiel> Materiel_ptr;
-typedef std::vector<Materiel_ptr> List_materiel;
+typedef QSharedPointer<Materiel> Materiel_ptr;
+typedef qx::QxCollection<long, Materiel_ptr> list_materiel;
 
 #include "tache.h"
 
@@ -20,7 +20,7 @@ public:
    QString      m_nom;
    int          m_volume;
    QString      m_description;
-   List_tache   m_tacheX;
+   list_tache   m_tacheX;
 
 
    Materiel() : m_id(0) { ; }

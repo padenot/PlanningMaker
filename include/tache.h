@@ -11,8 +11,15 @@ class QX_PMNG_DLL_EXPORT Tache;
 
 typedef std::pair<QDateTime,QDateTime> plageHoraire;
 typedef std::vector<plageHoraire> List_plageHoraire;
-typedef boost::shared_ptr<Tache> Tache_ptr;
-typedef std::vector<Tache_ptr> List_tache;
+
+typedef std::pair<int,int> orgaNecessairesParEquipe;
+typedef std::vector<orgaNecessairesParEquipe> List_orgaNecessairesParEquipe;
+
+typedef std::pair<int,int> orgaNecessairesParCategorie;
+typedef std::vector<orgaNecessairesParCategorie> List_orgaNecessairesParCategorie;
+
+typedef QSharedPointer<Tache> Tache_ptr;
+typedef qx::QxCollection<long, Tache_ptr> list_tache;
 
 #include "materiel.h"
 
@@ -31,10 +38,13 @@ public:
    QString      m_instructions;
    QString      m_consignesSecu;
    Lieu_ptr     m_lieu;
-   //orgas nécessaires
+   bool         m_respNecessaire;
+   List_orgaNecessairesParCategorie m_orgaNecessairesParCategorie;
+   List_orgaNecessairesParEquipe m_orgaNecessairesParEquipe;
+   int          m_orgaNecessaires;
    int          m_confiance;
 
-   List_materiel    m_materielX;
+   list_materiel    m_materielX;
    int          m_priorite;
 
 

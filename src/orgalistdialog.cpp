@@ -2,6 +2,7 @@
 #include "ui_orgalistdialog.h"
 #include "orga.h"
 #include "tache.h"
+
 #include <QtDebug>
 
 
@@ -21,21 +22,25 @@ qx::dao::create_table<Categorie>();
 qx::dao::create_table<Equipe>();
 
 
-Tache_ptr tac = Tache_ptr(new Tache);
+QSqlDatabase db = qx::QxSqlDatabase::getDatabase();
 
-Materiel_ptr ma = Materiel_ptr(new Materiel);
+qDebug()<<db.exec("CREATE TABLE materiel_tache (materiel_id INTEGER, tache_id INTEGER)").lastError();
+
+
 
 QSqlError daoError;
 
+
+Tache_ptr tac = Tache_ptr(new Tache);
+Materiel_ptr mat = Materiel_ptr(new Materiel);
 daoError = qx::dao::insert(tac);
-daoError = qx::dao::insert(ma);
+daoError = qx::dao::insert(mat);
+tac->m_materielX.insert(mat->m_id,mat);
+daoError =qx::dao::save_with_all_relation(tac);
 
-tac->m_materielX.insert(ma->m_id,ma);
-daoError = qx::dao::save_with_relation("list_materiel", tac);
+qDebug()<<daoError;
 
-
-
-QSqlDatabase db =  QSqlDatabase::addDatabase("QSQLITE");
+db =  QSqlDatabase::addDatabase("QSQLITE");
 db.setHostName("localhost");
 db.setDatabaseName("planningDatabase.db");
 

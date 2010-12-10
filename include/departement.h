@@ -25,7 +25,7 @@ public:
 
 QX_REGISTER_HPP_QX_PMNG(Departement, qx::trait::no_base_class_defined, 0)
 
-typedef boost::shared_ptr<Departement> Departement_ptr;
-typedef std::vector<Departement_ptr> List_departement;
+        typedef QSharedPointer<Departement> Departement_ptr;
+        typedef qx::QxCollection<long, Departement_ptr> list_departement;
 
 #endif

@@ -3,8 +3,8 @@
 
 class QX_PMNG_DLL_EXPORT Equipe;
 
-typedef boost::shared_ptr<Equipe> Equipe_ptr;
-typedef std::vector<Equipe_ptr> List_equipe;
+typedef QSharedPointer<Equipe> Equipe_ptr;
+typedef qx::QxCollection<long, Equipe_ptr> list_equipe;
 
 #include "orga.h"
 
