@@ -1,9 +1,11 @@
-#include "../include/precompiled.h"
+    #include "../include/precompiled.h"
 
 #include <QxMemLeak.h>
 
 #include <QtGui/QApplication>
 #include "mainwindow.h"
+#include "orga.h"
+#include "tache.h"
 
 #include <QSqlError>
 #include <QtDebug>
@@ -17,17 +19,18 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
 
-    //Setups SQLITE DB connection
-    qx::QxSqlDatabase::getSingleton()->setDriverName("QSQLITE");
-       qx::QxSqlDatabase::getSingleton()->setDatabaseName("./planningDatabase.db");
-       qx::QxSqlDatabase::getSingleton()->setHostName("localhost");
-       qx::QxSqlDatabase::getSingleton()->setUserName("root");
-       qx::QxSqlDatabase::getSingleton()->setPassword("");
+
+//    qx::QxSqlDatabase::deleteSingleton();
+//       qx::QxSqlDatabase::getSingleton()->setDriverName("QMYSQL");
+//          qx::QxSqlDatabase::getSingleton()->setDatabaseName("test");
+//          qx::QxSqlDatabase::getSingleton()->setHostName("127.0.0.1");
+//          qx::QxSqlDatabase::getSingleton()->setUserName("root");
+//          qx::QxSqlDatabase::getSingleton()->setPassword("GEN:3Dv[)J2I");
 
 
 
-MainWindow w;
-w.show();
+    MainWindow w;
+    w.show();
 
     return a.exec();
 }

@@ -3,6 +3,8 @@
 #include <QDate>
 #include <QPixmap>
 #include "departement.h"
+#include "QxCollection/QxCollection.h"
+#include "QxCommon/QxMacro.h"
 
 class QX_PMNG_DLL_EXPORT Orga;
 typedef QSharedPointer<Orga> Orga_ptr;
@@ -25,14 +27,14 @@ public:
    QString      m_nom;
    QString      m_prenom;
    QString      m_surnom;
-   QPixmap      m_photo;
+  // QPixmap      m_photo;
    QDate        m_dateNaissance;
    QString      m_adresse;
    QString      m_telephone;
    QString      m_operateur;
    QString      m_email;
-  Equipe_ptr   m_equipe;
-   Categorie_ptr m_categorie;
+   Equipe_ptr   m_equipe;
+   int          m_categorie;
    int          m_annee;
    Departement_ptr m_departement;
    bool         m_permis;
@@ -49,8 +51,9 @@ public:
    virtual ~Orga() { ; }
 };
 
-QX_REGISTER_HPP_QX_PMNG(Orga, qx::trait::no_base_class_defined, 0)
+QX_REGISTER_HPP_QX_PMNG(Orga, qx::trait::no_base_class_defined, 0);
 
+Q_DECLARE_METATYPE(Orga)
 
-
+Q_DECLARE_METATYPE(Orga_ptr)
 #endif

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 include(QxOrm.pri)
-QT       += core gui
+QT       += core gui sql
 
 TARGET = PlanningMaker
 TEMPLATE = app
@@ -29,28 +29,32 @@ DESTDIR = ./build/release
 SOURCES +=  ./src/main.cpp\
             ./src/mainwindow.cpp \
     ./src/orga.cpp \
-    ./src/orgalistdialog.cpp \
 ./src/departement.cpp \
 ./src/equipe.cpp \
 ./src/categorie.cpp \
 ./src/tache.cpp \
 ./src/groupetaches.cpp \
 ./src/lieu.cpp \
-./src/materiel.cpp
+./src/materiel.cpp \
+    src/planningmodel.cpp
 
 
 HEADERS  += ./include/mainwindow.h \
             ./include/precompiled.h \
             ./include/export.h \
     ./include/orga.h \
-    ./include/orgalistdialog.h\
 ./include/departement.h \
 ./include/equipe.h \
 ./include/categorie.h \
 ./include/tache.h \
 ./include/groupetaches.h \
 ./include/lieu.h \
-./include/materiel.h
+./include/materiel.h \
+    include/planningmodel.h
 
 FORMS    += ./ui/mainwindow.ui \
-    ./ui/orgalistdialog.ui
+    ./ui/orgalistdialog.ui \
+    ui/orgaCentral.ui
+
+RESOURCES += \
+    images.qrc

@@ -14,7 +14,7 @@ template <> void register_class(QxClass<Orga> & t)
    t.data(& Orga::m_nom, "nom");
    t.data(& Orga::m_prenom, "prenom");
    t.data(& Orga::m_surnom, "surnom");
-   t.data(& Orga::m_photo, "photo");
+  // t.data(& Orga::m_photo, "photo");
    t.data(& Orga::m_dateNaissance, "dateNaissance");
    t.data(& Orga::m_adresse, "adresse");
    t.data(& Orga::m_telephone, "telephone");
