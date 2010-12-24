@@ -7,30 +7,32 @@
 QX_REGISTER_CPP_QX_PMNG(Orga)
 
 namespace qx {
-template <> void register_class(QxClass<Orga> & t)
-{
-   t.id(& Orga::m_id, "orga_id");
+    template <> void register_class(QxClass<Orga> & t)
+    {
+       t.id(& Orga::m_id, "orga_id");
 
-   t.data(& Orga::m_nom, "nom");
-   t.data(& Orga::m_prenom, "prenom");
-   t.data(& Orga::m_surnom, "surnom");
-  // t.data(& Orga::m_photo, "photo");
-   t.data(& Orga::m_dateNaissance, "dateNaissance");
-   t.data(& Orga::m_adresse, "adresse");
-   t.data(& Orga::m_telephone, "telephone");
-   t.data(& Orga::m_operateur, "operateur");
-   t.data(& Orga::m_email, "email");
-   t.data(& Orga::m_annee, "annee");
-   t.data(& Orga::m_permis, "permis");
-   t.data(& Orga::m_statut, "statut");
-   t.data(& Orga::m_notes, "notes");
-   t.data(& Orga::m_motivation, "motivation");
-   t.data(& Orga::m_celibataire, "celibataire");
-   t.relationManyToOne(& Orga::m_departement, "departement_id");
-   //t.relationManyToOne(& Orga::m_equipe, "equipe_id");
+       t.data(& Orga::m_nom, "nom");
+       t.data(& Orga::m_prenom, "prenom");
+       t.data(& Orga::m_surnom, "surnom");
+      // t.data(& Orga::m_photo, "photo");
+       t.data(& Orga::m_dateNaissance, "dateNaissance");
+       t.data(& Orga::m_adresse, "adresse");
+       t.data(& Orga::m_telephone, "telephone");
+       t.data(& Orga::m_operateur, "operateur");
+       t.data(& Orga::m_email, "email");
+       t.data(& Orga::m_annee, "annee");
+       t.data(& Orga::m_permis, "permis");
+       t.data(& Orga::m_statut, "statut");
+       t.data(& Orga::m_notes, "notes");
+       t.data(& Orga::m_motivation, "motivation");
+       t.data(& Orga::m_celibataire, "celibataire");
+       t.relationManyToOne(& Orga::m_departement, "departement_id");
+       //t.relationManyToOne(& Orga::m_equipe, "equipe_id");
 
-
-}}
+       // This will change in the future, when categories will be implemented.
+       t.data(& Orga::m_categorie, "categorie");
+    }
+}
 
 void Orga::becomeJeanCapelle(){
 

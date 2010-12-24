@@ -36,6 +36,7 @@ MainWindow::~MainWindow()
 void MainWindow::onCancelOrgas()
 {
     clearOrgaForm();
+    State_ = Insertion;
 }
 
 void MainWindow::clearOrgaForm()
@@ -49,6 +50,8 @@ void MainWindow::clearOrgaForm()
     ui->operateurLineEdit_4->clear();
     ui->surnomLineEdit_4->clear();
     ui->permisBcheckBox_4->setChecked(false);
+    ui->departementComboBox_4->clear();
+    ui->confianceComboBox_4->clear();
     ui->dateNaissanceEdit_4->setDate(QDate(1990, 1, 1));
     ui->emailLineEdit->clear();
 }
@@ -62,6 +65,7 @@ void MainWindow::onOkOrgaForm()
 
     if(State_ == Modification)
         orga.m_id = enModification->m_id;
+
     orga.m_adresse = ui->adresseLineEdit_4->text();
     orga.m_annee = ui->anneeSpinBox_4->value();
     orga.m_dateNaissance = ui->dateNaissanceEdit_4->date();
@@ -89,8 +93,8 @@ void MainWindow::onOkOrgaForm()
     else
         model_.addOrga(orga);
 
-    }
     clearOrgaForm();
+    }
 }
 
 void MainWindow::resetColorOrgaForm()
@@ -190,6 +194,8 @@ void MainWindow::searchOrgas()
 
 void MainWindow::loadInPanel(Orga_ptr orga)
 {
+    // This will store the orga that will be loaded in the panel,
+    // to keep the data not displayed, such as the ID.
     enModification = orga;
     ui->adresseLineEdit_4->setText(orga->m_adresse);
     ui->anneeSpinBox_4->setValue(orga->m_annee);
@@ -203,6 +209,9 @@ void MainWindow::loadInPanel(Orga_ptr orga)
     ui->permisBcheckBox_4->setChecked(orga->m_permis);
     ui->confianceComboBox_4->setCurrentIndex(orga->m_categorie);
     ui->notesTextEdit->setPlainText(orga->m_notes);
+
+    // A valid record has been loaded : reset the colors
+    resetColorOrgaForm();
 }
 
 void MainWindow::listOrgaDoubleClicked(QModelIndex index)
@@ -212,6 +221,7 @@ void MainWindow::listOrgaDoubleClicked(QModelIndex index)
     if(item->data(PointerRole).canConvert<Orga_ptr>())
     {
         Orga_ptr orga = item->data(PointerRole).value<Orga_ptr>();
+        qDebug() << orga->m_categorie;
         loadInPanel(orga);
     }
 }
