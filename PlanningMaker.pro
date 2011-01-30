@@ -38,7 +38,8 @@ SOURCES +=  ./src/main.cpp\
 ./src/materiel.cpp \
     src/planningmodel.cpp \
     src/orgaeditwidget.cpp \
-    src/orgaselectwidget.cpp
+    src/orgaselectwidget.cpp \
+src/categoryeditwidget.cpp
 
 
 HEADERS  += ./include/mainwindow.h \
@@ -54,13 +55,15 @@ HEADERS  += ./include/mainwindow.h \
 ./include/materiel.h \
     include/planningmodel.h \
     include/orgaeditwidget.h \
-    include/orgaselectwidget.h
+    include/orgaselectwidget.h \
+include/categoryeditwidget.h
 
 FORMS    += ./ui/mainwindow.ui \
     ./ui/orgalistdialog.ui \
     ui/orgaCentral.ui \
     ui/orgaeditwidget.ui \
-    ui/orgaselectwidget.ui
+    ui/orgaselectwidget.ui \
+ui/categoryeditwidget.ui
 
 RESOURCES += \
     images.qrc

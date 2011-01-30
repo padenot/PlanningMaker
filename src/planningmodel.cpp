@@ -26,7 +26,9 @@ PlanningModel::PlanningModel()
     qx::dao::create_table<Categorie>();
     qx::dao::create_table<Equipe>();
 
+
     qx::dao::fetch_all(orgas);
+
 }
 
 
@@ -80,3 +82,5 @@ list_orga PlanningModel::getOrgasByName(const QString& search)
     }
     return toReturn;
 }
+
+
