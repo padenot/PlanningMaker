@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "orga.h"
+
 #include <QRegExp>
 #include <QListWidgetItem>
 #include <QxCollection/QxForeach.h>
@@ -13,19 +14,27 @@ const QString MainWindow::NoError = "background-color: none;";
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow),
-    enModification(0)
+    ui(new Ui::MainWindow)
+
 {
     ui->setupUi(this);
+    oew = new orgaEditWidget::orgaEditWidget(this);
+    oew->model_=&model_;
+    ui->stackedWidget->addWidget(oew);
 
-    connect(ui->ongletsCategorie, SIGNAL(currentChanged(int)), ui->stackedWidget, SLOT(setCurrentIndex(int)));
-    connect(ui->okCancelOrgas, SIGNAL(rejected()), this, SLOT(onCancelOrgas()));
-    connect(ui->okCancelOrgas, SIGNAL(accepted()), this, SLOT(onOkOrgaForm()));
-    connect(&model_, SIGNAL(orgaRefresh()), this, SLOT(orgasRefresh()));
-    connect(ui->bouttonRechercheOrga, SIGNAL(clicked()), this, SLOT(searchOrgas()));
-    connect(ui->listWidgetOrga, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(listOrgaDoubleClicked(QModelIndex)));
+    osw = new orgaSelectWidget::orgaSelectWidget(this);
+    osw->model_=&model_;
+    ui->ongletsCategorie->insertTab(0,osw,"Orga");
 
-    orgasRefresh();
+
+   connect(ui->ongletsCategorie, SIGNAL(currentChanged(int)), ui->stackedWidget, SLOT(setCurrentIndex(int)));
+
+   connect(&model_, SIGNAL(orgaRefresh()), osw, SLOT(Refresh()));
+connect(osw, SIGNAL(orgaSelected(Orga_ptr)), oew, SLOT(loadInPanel(Orga_ptr)));
+
+
+
+
 }
 
 MainWindow::~MainWindow()
@@ -33,186 +42,14 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::onCancelOrgas()
-{
-    clearOrgaForm();
-    State_ = Insertion;
-}
 
-void MainWindow::clearOrgaForm()
-{
-    ui->adresseLineEdit_4->clear();
-    ui->anneeSpinBox_4->clear();
-    ui->dateNaissanceEdit_4->clear();
-    ui->nomLineEdit_4->clear();
-    ui->prenomLineEdit_4->clear();
-    ui->telephoneLineEdit_4->clear();
-    ui->operateurLineEdit_4->clear();
-    ui->surnomLineEdit_4->clear();
-    ui->permisBcheckBox_4->setChecked(false);
-    ui->departementComboBox_4->clear();
-    ui->confianceComboBox_4->clear();
-    ui->dateNaissanceEdit_4->setDate(QDate(1990, 1, 1));
-    ui->emailLineEdit->clear();
-}
 
-void MainWindow::onOkOrgaForm()
-{
-    resetColorOrgaForm();
-    if(validateOrgaForm())
-    {
-    Orga orga;
 
-    if(State_ == Modification)
-        orga.m_id = enModification->m_id;
 
-    orga.m_adresse = ui->adresseLineEdit_4->text();
-    orga.m_annee = ui->anneeSpinBox_4->value();
-    orga.m_dateNaissance = ui->dateNaissanceEdit_4->date();
-    orga.m_nom = ui->nomLineEdit_4->text();
-    orga.m_prenom = ui->prenomLineEdit_4->text();
-    orga.m_telephone = ui->telephoneLineEdit_4->text();
-    orga.m_operateur = ui->operateurLineEdit_4->text();
-    orga.m_surnom = ui->surnomLineEdit_4->text();
-    orga.m_email = ui->emailLineEdit->text();
-    orga.m_permis = ui->permisBcheckBox_4->isChecked();
-    orga.m_categorie = ui->confianceComboBox_4->currentIndex();
-    orga.m_notes = ui->notesTextEdit->toPlainText();
 
-    //TODO future versions :
-    orga.m_celibataire = false;
-    orga.m_motivation  = 0;
-    orga.m_statut = 0;
-    //orga.m_departement = ui->departementComboBox_4->currentText();
 
-    if(State_ == Modification)
-    {
-        model_.addOrga(orga,true);
-        State_ = Insertion;
-    }
-    else
-        model_.addOrga(orga);
 
-    clearOrgaForm();
-    }
-}
 
-void MainWindow::resetColorOrgaForm()
-{
-    ui->adresseLineEdit_4->setStyleSheet(NoError);
-    ui->anneeSpinBox_4->setStyleSheet(NoError);
-    ui->dateNaissanceEdit_4->setStyleSheet(NoError);
-    ui->nomLineEdit_4->setStyleSheet(NoError);
-    ui->prenomLineEdit_4->setStyleSheet(NoError);
-    ui->telephoneLineEdit_4->setStyleSheet(NoError);
-    ui->operateurLineEdit_4->setStyleSheet(NoError);
-    ui->surnomLineEdit_4->setStyleSheet(NoError);
-    ui->departementLabel_4->setStyleSheet(NoError);
-    ui->emailLineEdit->setStyleSheet(NoError);
-    ui->notesTextEdit->setStyleSheet(NoError);
-}
-
-bool MainWindow::validateOrgaForm()
-{
-    bool valid = true;
-    if(ui->adresseLineEdit_4->text().isEmpty())
-    {
-        ui->adresseLineEdit_4->setStyleSheet(ErrorStyle);
-        valid = false;
-    }
-    if(ui->anneeSpinBox_4->value() == 0)
-    {
-        ui->anneeSpinBox_4->setStyleSheet(ErrorStyle);
-        valid = false;
-    }
-    if(! ui->dateNaissanceEdit_4->date().isValid())
-    {
-        ui->dateNaissanceEdit_4->setStyleSheet(ErrorStyle);
-        valid = false;
-    }
-    if(ui->nomLineEdit_4->text().isEmpty())
-    {
-        ui->nomLineEdit_4->setStyleSheet(ErrorStyle);
-        valid = false;
-    }
-    if(ui->prenomLineEdit_4->text().isEmpty())
-    {
-        ui->prenomLineEdit_4->setStyleSheet(ErrorStyle);
-        valid = false;
-    }
-    if(ui->telephoneLineEdit_4->text().isEmpty())
-    {    ui->telephoneLineEdit_4->setStyleSheet(ErrorStyle);
-        valid = false;
-    }
-    if(ui->operateurLineEdit_4->text().isEmpty())
-    {
-        ui->operateurLineEdit_4->setStyleSheet(ErrorStyle);
-        valid = false;
-    }
-    if((ui->anneeSpinBox_4->value() > 2 && ui->departementComboBox_4->currentText() == "PC"))
-    {
-        ui->anneeSpinBox_4->setStyleSheet(ErrorStyle);
-        ui->departementLabel_4->setStyleSheet(ErrorStyleText);
-        valid = false;
-    }
-
-    QRegExp emailValidator("[A-Z0-9._+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,4}");
-    emailValidator.setCaseSensitivity(Qt::CaseInsensitive);
-    if( ! emailValidator.exactMatch(ui->emailLineEdit->text()))
-    {
-        ui->emailLineEdit->setStyleSheet(ErrorStyle);
-        valid = false;
-    }
-    return valid;
-}
-
-void MainWindow::orgasRefresh()
-{
-    list_orga orgas = model_.getOrgasByName(ui->champRechercheOrga->text());
-
-    ui->listWidgetOrga->clear();
-
-    qDebug() << "Size:" << orgas.size();
-
-    _foreach(Orga_ptr orga, orgas)
-    {
-        QListWidgetItem* item = new QListWidgetItem(orga->m_prenom + " " + orga->m_nom);
-
-        QVariant v;
-        v.setValue<Orga_ptr>(orga);
-
-        item->setData(PointerRole, v);
-
-        ui->listWidgetOrga->addItem(item);
-    }
-}
-
-void MainWindow::searchOrgas()
-{
-    orgasRefresh();
-}
-
-void MainWindow::loadInPanel(Orga_ptr orga)
-{
-    // This will store the orga that will be loaded in the panel,
-    // to keep the data not displayed, such as the ID.
-    enModification = orga;
-    ui->adresseLineEdit_4->setText(orga->m_adresse);
-    ui->anneeSpinBox_4->setValue(orga->m_annee);
-    ui->dateNaissanceEdit_4->setDate(orga->m_dateNaissance);
-    ui->nomLineEdit_4->setText(orga->m_nom);
-    ui->prenomLineEdit_4->setText(orga->m_prenom);
-    ui->telephoneLineEdit_4->setText(orga->m_telephone);
-    ui->operateurLineEdit_4->setText(orga->m_operateur);
-    ui->surnomLineEdit_4->setText(orga->m_surnom);
-    ui->emailLineEdit->setText(orga->m_email);
-    ui->permisBcheckBox_4->setChecked(orga->m_permis);
-    ui->confianceComboBox_4->setCurrentIndex(orga->m_categorie);
-    ui->notesTextEdit->setPlainText(orga->m_notes);
-
-    // A valid record has been loaded : reset the colors
-    resetColorOrgaForm();
-}
 
 void MainWindow::listOrgaDoubleClicked(QModelIndex index)
 {
@@ -222,6 +59,6 @@ void MainWindow::listOrgaDoubleClicked(QModelIndex index)
     {
         Orga_ptr orga = item->data(PointerRole).value<Orga_ptr>();
         qDebug() << orga->m_categorie;
-        loadInPanel(orga);
+
     }
 }

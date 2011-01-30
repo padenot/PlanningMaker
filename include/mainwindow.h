@@ -2,9 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+class MainWindow;
 #include "ui_orgaCentral.h"
 #include "planningmodel.h"
+#include "orgaeditwidget.h"
+#include "orgaselectwidget.h"
 
 
 namespace Ui {
@@ -18,6 +20,12 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    static const QString ErrorStyle;
+    static const QString ErrorMessage;
+    static const QString ErrorDepartAnnee;
+    static const QString ErrorStyleText;
+    static const QString NoError;
 
 private:
     Ui::MainWindow *ui;
@@ -34,29 +42,27 @@ private:
         Modification
     } State_;
 
-static const int PointerRole = 1001;
+
+    orgaEditWidget *oew;
+    orgaSelectWidget *osw;
+    static const int PointerRole = 1001;
 
 
     void clearOrgaForm();
         bool validateOrgaForm();
         void resetColorOrgaForm();
 
-    static const QString ErrorStyle;
-    static const QString ErrorMessage;
-    static const QString ErrorDepartAnnee;
-    static const QString ErrorStyleText;
-    static const QString NoError;
 
-    Orga_ptr enModification;
+
+
 
     PlanningModel model_;
 private slots:
-    void onCancelOrgas();
-    void onOkOrgaForm();
-    void orgasRefresh();
-    void searchOrgas();
+
+
+
     void listOrgaDoubleClicked(QModelIndex);
-    void loadInPanel(Orga_ptr orga);
+
 
 };
 

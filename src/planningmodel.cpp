@@ -7,6 +7,7 @@
 #include "lieu.h"
 #include "categorie.h"
 #include "equipe.h"
+#include "orga.h"
 #include <QxCollection/QxForeach.h>
 
 
@@ -73,7 +74,8 @@ list_orga PlanningModel::getOrgasByName(const QString& search)
         if(searchInto.contains(search, Qt::CaseInsensitive))
         {
             qDebug() << "match:" << orga->m_prenom + " " + orga->m_nom;
-            toReturn.push_back(0,orga);
+            toReturn.insert(toReturn.size(),orga);
+            qDebug() << "taille:" << toReturn.size();
         }
     }
     return toReturn;
