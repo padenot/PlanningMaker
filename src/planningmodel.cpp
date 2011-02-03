@@ -26,7 +26,7 @@ PlanningModel::PlanningModel()
     qx::dao::create_table<Categorie>();
     qx::dao::create_table<Equipe>();
 
-
+qx::dao::fetch_all(categories);
     qx::dao::fetch_all(orgas);
 
 }
@@ -79,6 +79,21 @@ list_orga PlanningModel::getOrgasByName(const QString& search)
             toReturn.insert(toReturn.size(),orga);
             qDebug() << "taille:" << toReturn.size();
         }
+    }
+    return toReturn;
+}
+
+list_categorie PlanningModel::getCategories()
+{
+
+    list_categorie toReturn;
+
+    _foreach(Categorie_ptr categorie, categories)
+    {
+
+            toReturn.insert(toReturn.size(),categorie);
+
+
     }
     return toReturn;
 }

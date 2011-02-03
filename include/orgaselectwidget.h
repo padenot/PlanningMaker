@@ -23,10 +23,14 @@ private:
     Ui::orgaSelectWidget *ui;
 
     static const int PointerRole = 1001;
+    QAction *editAct;
+    QAction *delAct;
 
 private slots:
    void on_listWidgetOrga_doubleClicked(QModelIndex index);
    void Refresh();
+   void editOrga();
+   void delOrga();
 
 signals :
         void orgaSelected(Orga_ptr);

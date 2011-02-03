@@ -53,6 +53,7 @@ static const int PointerRole = 1001;
     Ui::orgaEditWidget *ui;
 
 private slots:
+    void on_okCancelOrgas_clicked(QAbstractButton* button);
     void onCancelOrgas();
     void onOkOrgaForm();
 
@@ -64,3 +65,5 @@ private slots:
 };
 
 #endif // ORGAEDITWIDGET_H
+
+

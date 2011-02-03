@@ -7,11 +7,9 @@ orgaEditWidget::orgaEditWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::orgaEditWidget)
 {
-    ui->setupUi(this);
 
-    connect(ui->okCancelOrgas, SIGNAL(rejected()), this, SLOT(onCancelOrgas()));
-    connect(ui->okCancelOrgas, SIGNAL(accepted()), this, SLOT(onOkOrgaForm()));
-State_=Insertion;
+ui->setupUi(this);
+    State_=Insertion;
 
 
 
@@ -163,6 +161,8 @@ void orgaEditWidget::loadInPanel(Orga_ptr orga)
 {
     // This will store the orga that will be loaded in the panel,
     // to keep the data not displayed, such as the ID.
+
+
     State_=Modification;
     enModification = orga;
     ui->adresseLineEdit_4->setText(orga->m_adresse);
@@ -183,3 +183,18 @@ void orgaEditWidget::loadInPanel(Orga_ptr orga)
 }
 
 
+void orgaEditWidget::on_okCancelOrgas_clicked(QAbstractButton* button)
+{
+
+    if ( ui->okCancelOrgas->standardButton(button) == QDialogButtonBox::Reset){
+    onCancelOrgas();
+
+
+
+    }else if ( ui->okCancelOrgas->standardButton(button) == QDialogButtonBox::Save){
+    onOkOrgaForm();
+
+
+
+    }
+}

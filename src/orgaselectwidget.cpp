@@ -11,6 +11,18 @@ orgaSelectWidget::orgaSelectWidget(QWidget *parent) :
 
     connect(ui->bouttonRechercheOrga, SIGNAL(clicked()), this, SLOT(Refresh()));
     connect(ui->listWidgetOrga, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(listOrgaDoubleClicked(QModelIndex)));
+
+    editAct = new QAction("Modifier", this);
+    editAct->setStatusTip("Modifier les informations sur l'Orga");
+    connect(editAct, SIGNAL(triggered()), this, SLOT(editOrga()));
+    ui->listWidgetOrga->addAction(editAct);
+
+    delAct = new QAction("Supprimer", this);
+    delAct->setStatusTip("Supprimer l'Orga");
+    connect(delAct, SIGNAL(triggered()), this, SLOT(delOrga()));
+    ui->listWidgetOrga->addAction(delAct);
+
+    ui->listWidgetOrga->setContextMenuPolicy(Qt::ActionsContextMenu);
 }
 
 orgaSelectWidget::~orgaSelectWidget()
@@ -42,12 +54,28 @@ void orgaSelectWidget::Refresh()
 void orgaSelectWidget::on_listWidgetOrga_doubleClicked(QModelIndex index)
 {
 
-        QListWidgetItem * item = ui->listWidgetOrga->item(index.row());
-        if(item->data(PointerRole).canConvert<Orga_ptr>())
-        {
-            Orga_ptr orga = item->data(PointerRole).value<Orga_ptr>();
-            qDebug() << orga->m_categorie;
-            emit orgaSelected(orga);
-        }
+
+
+}
+
+void orgaSelectWidget::delOrga(){
+
+
+}
+
+
+void orgaSelectWidget::editOrga(){
+
+    if (!ui->listWidgetOrga->selectedItems().isEmpty()){
+    QListWidgetItem * item = ui->listWidgetOrga->selectedItems()[0];
+
+    if(item->data(PointerRole).canConvert<Orga_ptr>())
+    {
+        Orga_ptr orga = item->data(PointerRole).value<Orga_ptr>();
+        qDebug() << orga->m_categorie;
+        emit orgaSelected(orga);
+    }
+
+}
 
 }

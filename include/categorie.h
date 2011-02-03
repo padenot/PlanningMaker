@@ -26,4 +26,8 @@ QX_REGISTER_HPP_QX_PMNG(Categorie, qx::trait::no_base_class_defined, 0)
         typedef QSharedPointer<Categorie> Categorie_ptr;
         typedef qx::QxCollection<long, Categorie_ptr> list_categorie;
 
+Q_DECLARE_METATYPE(Categorie)
+
+Q_DECLARE_METATYPE(Categorie_ptr)
+
 #endif

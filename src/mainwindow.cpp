@@ -1,9 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "orga.h"
+
 
 #include <QRegExp>
 #include <QListWidgetItem>
+#include <QtGui>
 #include <QxCollection/QxForeach.h>
 
 const QString MainWindow::ErrorStyle = "background-color: #f44";
@@ -18,24 +19,61 @@ MainWindow::MainWindow(QWidget *parent) :
 
 {
     ui->setupUi(this);
-    oew = new orgaEditWidget::orgaEditWidget(this);
-    oew->model_=&model_;
-    ui->stackedWidget->addWidget(oew);
+    ui->orgaSelectWidget_2->model_=&model_;
+    ui->orgaEditWidget_1->model_=&model_;
 
-    osw = new orgaSelectWidget::orgaSelectWidget(this);
-    osw->model_=&model_;
-    ui->ongletsCategorie->insertTab(0,osw,"Orga");
+readSettings();
 
 
-   connect(ui->ongletsCategorie, SIGNAL(currentChanged(int)), ui->stackedWidget, SLOT(setCurrentIndex(int)));
+//connect(ui->ongletsCategorie, SIGNAL(currentChanged(int)), ui->stackedWidget, SLOT(setCurrentIndex(int)));
 
-   connect(&model_, SIGNAL(orgaRefresh()), osw, SLOT(Refresh()));
-connect(osw, SIGNAL(orgaSelected(Orga_ptr)), oew, SLOT(loadInPanel(Orga_ptr)));
-
-
+connect(&model_, SIGNAL(orgaRefresh()), ui->orgaSelectWidget_2, SLOT(Refresh()));
+//connect(&model_, SIGNAL(orgaRefresh()), mew, SLOT(Refresh()));
+connect(ui->orgaSelectWidget_2, SIGNAL(orgaSelected(Orga_ptr)), ui->orgaEditWidget_1, SLOT(loadInPanel(Orga_ptr)));
+connect(ui->orgaSelectWidget_2, SIGNAL(orgaSelected(Orga_ptr)), this, SLOT(showOrgaEditPanel()));
 
 
 }
+
+
+void MainWindow::writeSettings()
+{
+    QSettings settings("MyCompany", "MyApp");
+
+    settings.beginGroup("mainWindow");
+    settings.setValue("geometry", saveGeometry());
+    settings.setValue("state", saveState());
+    settings.endGroup();
+}
+
+void MainWindow::readSettings()
+{
+    QSettings settings("MyCompany", "MyApp");
+
+
+    restoreGeometry(settings.value("geometry").toByteArray());
+    restoreState(settings.value("windowState").toByteArray());
+
+}
+
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    QSettings settings("MyCompany", "MyApp");
+    settings.setValue("geometry", saveGeometry());
+    settings.setValue("windowState", saveState());
+    QMainWindow::closeEvent(event);
+}
+
+
+void MainWindow::showOrgaEditPanel(){
+ui->orgaEditDockWidget->show();
+
+}
+
+
+
+
 
 MainWindow::~MainWindow()
 {
@@ -51,14 +89,5 @@ MainWindow::~MainWindow()
 
 
 
-void MainWindow::listOrgaDoubleClicked(QModelIndex index)
-{
-    State_ = Modification;
-    QListWidgetItem * item = ui->listWidgetOrga->item(index.row());
-    if(item->data(PointerRole).canConvert<Orga_ptr>())
-    {
-        Orga_ptr orga = item->data(PointerRole).value<Orga_ptr>();
-        qDebug() << orga->m_categorie;
 
-    }
-}
+

@@ -7,6 +7,7 @@ class MainWindow;
 #include "planningmodel.h"
 #include "orgaeditwidget.h"
 #include "orgaselectwidget.h"
+#include "manifeditwidget.h"
 
 
 namespace Ui {
@@ -45,6 +46,7 @@ private:
 
     orgaEditWidget *oew;
     orgaSelectWidget *osw;
+    manifEditWidget *mew;
     static const int PointerRole = 1001;
 
 
@@ -56,12 +58,17 @@ private:
 
 
 
+
     PlanningModel model_;
+
+    void closeEvent(QCloseEvent *event);
 private slots:
+    void writeSettings();
+    void readSettings();
+    void showOrgaEditPanel();
 
 
 
-    void listOrgaDoubleClicked(QModelIndex);
 
 
 };
