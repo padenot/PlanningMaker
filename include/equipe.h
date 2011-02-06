@@ -28,6 +28,8 @@ public:
 
 QX_REGISTER_HPP_QX_PMNG(Equipe, qx::trait::no_base_class_defined, 0)
 
+        Q_DECLARE_METATYPE(Equipe)
 
+        Q_DECLARE_METATYPE(Equipe_ptr)
 
 #endif

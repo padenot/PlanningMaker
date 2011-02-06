@@ -29,6 +29,8 @@ PlanningModel::PlanningModel()
 qx::dao::fetch_all(categories);
     qx::dao::fetch_all(orgas);
 
+    emit refresh();
+
 }
 
 
@@ -44,7 +46,7 @@ void PlanningModel::addOrga(Orga orga, bool update)
         qDebug() << error;
     }
     qx::dao::fetch_all(orgas);
-    emit orgaRefresh();
+    emit refresh();
 }
 
 void PlanningModel::removeOrga(Orga orga)
@@ -55,8 +57,87 @@ void PlanningModel::removeOrga(Orga orga)
         qDebug() << error;
     }
     qx::dao::fetch_all(orgas);
-    emit orgaRefresh();
+    emit refresh();
 }
+
+void PlanningModel::addCategorie(Categorie categorie, bool update)
+{
+    QSqlError error;
+    if(update)
+         error = qx::dao::update(categorie);
+    else
+         error = qx::dao::insert(categorie);
+    if( ! error.isValid())
+    {
+        qDebug() << error;
+    }
+    qx::dao::fetch_all(categories);
+    emit refresh();
+}
+
+void PlanningModel::removeCategorie(Categorie categorie)
+{
+    QSqlError error = qx::dao::delete_by_id(categorie);
+    if( ! error.isValid())
+    {
+        qDebug() << error;
+    }
+    qx::dao::fetch_all(categories);
+    emit refresh();
+}
+
+void PlanningModel::addEquipe(Equipe equipe, bool update)
+{
+    QSqlError error;
+    if(update)
+         error = qx::dao::update(equipe);
+    else
+         error = qx::dao::insert(equipe);
+    if( ! error.isValid())
+    {
+        qDebug() << error;
+    }
+    qx::dao::fetch_all(equipes);
+    emit refresh();
+}
+
+void PlanningModel::removeEquipe(Equipe equipe)
+{
+    QSqlError error = qx::dao::delete_by_id(equipe);
+    if( ! error.isValid())
+    {
+        qDebug() << error;
+    }
+    qx::dao::fetch_all(equipes);
+    emit refresh();
+}
+
+void PlanningModel::addLieu(Lieu lieu, bool update)
+{
+    QSqlError error;
+    if(update)
+         error = qx::dao::update(lieu);
+    else
+         error = qx::dao::insert(lieu);
+    if( ! error.isValid())
+    {
+        qDebug() << error;
+    }
+    qx::dao::fetch_all(lieux);
+    emit refresh();
+}
+
+void PlanningModel::removeLieu(Lieu lieu)
+{
+    QSqlError error = qx::dao::delete_by_id(lieu);
+    if( ! error.isValid())
+    {
+        qDebug() << error;
+    }
+    qx::dao::fetch_all(lieux);
+    emit refresh();
+}
+
 
 list_orga PlanningModel::getOrgasByName(const QString& search)
 {
@@ -98,4 +179,37 @@ list_categorie PlanningModel::getCategories()
     return toReturn;
 }
 
+list_equipe PlanningModel::getEquipes(){
+
+    list_equipe toReturn;
+
+    _foreach(Equipe_ptr equipe, equipes)
+    {
+
+            toReturn.insert(toReturn.size(),equipe);
+
+
+    }
+    return toReturn;
+
+
+
+}
+
+list_lieu PlanningModel::getLieux(){
+
+    list_lieu toReturn;
+
+    _foreach(Lieu_ptr lieu, lieux)
+    {
+
+            toReturn.insert(toReturn.size(),lieu);
+
+
+    }
+    return toReturn;
+
+
+
+}
 

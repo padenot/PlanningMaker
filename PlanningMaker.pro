@@ -39,7 +39,8 @@ SOURCES +=  ./src/main.cpp\
     src/planningmodel.cpp \
     src/orgaeditwidget.cpp \
     src/orgaselectwidget.cpp \
-src/manifeditwidget.cpp
+src/manifeditwidget.cpp \
+src/cateditwidget.cpp
 
 
 HEADERS  += ./include/mainwindow.h \
@@ -56,14 +57,16 @@ HEADERS  += ./include/mainwindow.h \
     include/planningmodel.h \
     include/orgaeditwidget.h \
     include/orgaselectwidget.h \
-include/manifeditwidget.h
+include/manifeditwidget.h \
+include/cateditwidget.h
 
 FORMS    += ./ui/mainwindow.ui \
     ./ui/orgalistdialog.ui \
     ui/orgaCentral.ui \
     ui/orgaeditwidget.ui \
     ui/orgaselectwidget.ui \
-ui/manifeditwidget.ui
+ui/manifeditwidget.ui \
+ui/cateditwidget.ui
 
 RESOURCES += \
     images.qrc

@@ -30,7 +30,7 @@ orgaSelectWidget::~orgaSelectWidget()
     delete ui;
 }
 
-void orgaSelectWidget::Refresh()
+void orgaSelectWidget::refresh()
 {
     list_orga orgas = model_->getOrgasByName(ui->champRechercheOrga->text());
 

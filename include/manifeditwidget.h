@@ -3,12 +3,13 @@
 
 #include <QWidget>
  #include <QListWidgetItem>
-class manifEditWidget;
-#include "mainwindow.h"
-
 namespace Ui {
     class manifEditWidget;
 }
+#include "mainwindow.h"
+
+
+
 
 class manifEditWidget : public QWidget
 {
@@ -18,7 +19,7 @@ public:
     explicit manifEditWidget(QWidget *parent = 0);
     PlanningModel * model_;
 
-
+~manifEditWidget();
 
 
 
@@ -29,13 +30,23 @@ private:
 
     Ui::manifEditWidget *ui;
 
-    ~manifEditWidget();
+
 
 
 private slots:
 
 
     void Refresh();
+void load(Equipe_ptr);
+void load(Categorie_ptr);
+void load(Lieu_ptr);
+
+void onOkEq();
+void onOkCat();
+void onOkLi();
+
+void onCancel();
+
 
 
 };

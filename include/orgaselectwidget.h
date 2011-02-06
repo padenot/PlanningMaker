@@ -28,7 +28,7 @@ private:
 
 private slots:
    void on_listWidgetOrga_doubleClicked(QModelIndex index);
-   void Refresh();
+   void refresh();
    void editOrga();
    void delOrga();
 

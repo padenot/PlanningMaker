@@ -49,7 +49,7 @@
     </sizepolicy>
    </property>
    <property name="windowTitle">
-    <string>Orga</string>
+    <string>Orgas</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -90,6 +90,21 @@
     </layout>
    </widget>
   </widget>
+  <widget class="QDockWidget" name="catEditDockWidget">
+   <property name="windowTitle">
+    <string>Catégories</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="catEditWidget" name="catEditWidget_1" native="true"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -103,6 +118,12 @@
    <class>orgaSelectWidget</class>
    <extends>QWidget</extends>
    <header>orgaselectwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>catEditWidget</class>
+   <extends>QWidget</extends>
+   <header>cateditwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

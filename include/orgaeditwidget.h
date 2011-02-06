@@ -59,6 +59,7 @@ private slots:
 
 
     void loadInPanel(Orga_ptr orga);
+    void setCategorie(Categorie_ptr categorie);
 
 
 

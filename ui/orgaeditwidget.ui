@@ -18,16 +18,10 @@
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="3" column="0">
-        <widget class="QLineEdit" name="surnomLineEdit_4">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>13</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
+       <item row="1" column="0">
+        <widget class="QLineEdit" name="nomLineEdit_4">
          <property name="placeholderText">
-          <string>Surnom</string>
+          <string>Nom</string>
          </property>
         </widget>
        </item>
@@ -51,6 +45,13 @@
          </property>
         </widget>
        </item>
+       <item row="2" column="0">
+        <widget class="QLineEdit" name="prenomLineEdit_4">
+         <property name="placeholderText">
+          <string>Prénom</string>
+         </property>
+        </widget>
+       </item>
        <item row="2" column="1">
         <widget class="QLineEdit" name="telephoneLineEdit_4">
          <property name="inputMask">
@@ -64,16 +65,16 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="0">
-        <widget class="QLineEdit" name="adresseLineEdit_4">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       <item row="3" column="0">
+        <widget class="QLineEdit" name="surnomLineEdit_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>13</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
          <property name="placeholderText">
-          <string>Adresse</string>
+          <string>Surnom</string>
          </property>
         </widget>
        </item>
@@ -110,38 +111,24 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="confianceLabel_4">
+       <item row="6" column="0">
+        <widget class="QLineEdit" name="adresseLineEdit_4">
          <property name="text">
-          <string>Confiance</string>
+          <string/>
          </property>
-         <property name="buddy">
-          <cstring>confianceComboBox</cstring>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+         <property name="placeholderText">
+          <string>Adresse</string>
          </property>
         </widget>
        </item>
        <item row="7" column="1">
-        <widget class="QComboBox" name="confianceComboBox_4">
-         <item>
-          <property name="text">
-           <string>BdE</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Confiance</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Hard</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Soft</string>
-          </property>
-         </item>
+        <widget class="QPushButton" name="catPushButton">
+         <property name="text">
+          <string>Changer...</string>
+         </property>
         </widget>
        </item>
        <item row="8" column="0">
@@ -248,17 +235,13 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QLineEdit" name="prenomLineEdit_4">
-         <property name="placeholderText">
-          <string>Prénom</string>
+       <item row="7" column="0">
+        <widget class="QLabel" name="confianceLabel_4">
+         <property name="text">
+          <string>Catégorie</string>
          </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLineEdit" name="nomLineEdit_4">
-         <property name="placeholderText">
-          <string>Nom</string>
+         <property name="buddy">
+          <cstring>confianceComboBox</cstring>
          </property>
         </widget>
        </item>

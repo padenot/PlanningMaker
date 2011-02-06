@@ -46,7 +46,8 @@ private:
 
     orgaEditWidget *oew;
     orgaSelectWidget *osw;
-    manifEditWidget *mew;
+
+
     static const int PointerRole = 1001;
 
 
@@ -63,7 +64,7 @@ private:
 
     void closeEvent(QCloseEvent *event);
 private slots:
-    void writeSettings();
+
     void readSettings();
     void showOrgaEditPanel();
 

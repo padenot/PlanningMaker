@@ -38,7 +38,7 @@ void orgaEditWidget::clearOrgaForm()
     ui->surnomLineEdit_4->clear();
     ui->permisBcheckBox_4->setChecked(false);
     ui->departementComboBox_4->clear();
-    ui->confianceComboBox_4->clear();
+   // ui->confianceComboBox_4->clear();
     ui->dateNaissanceEdit_4->setDate(QDate(1990, 1, 1));
     ui->emailLineEdit->clear();
 }
@@ -63,7 +63,7 @@ void orgaEditWidget::onOkOrgaForm()
     orga.m_surnom = ui->surnomLineEdit_4->text();
     orga.m_email = ui->emailLineEdit->text();
     orga.m_permis = ui->permisBcheckBox_4->isChecked();
-    orga.m_categorie = ui->confianceComboBox_4->currentIndex();
+    //orga.m_categorie = ui->confianceComboBox_4->currentIndex();
     orga.m_notes = ui->notesTextEdit->toPlainText();
 
     //TODO future versions :
@@ -175,12 +175,20 @@ void orgaEditWidget::loadInPanel(Orga_ptr orga)
     ui->surnomLineEdit_4->setText(orga->m_surnom);
     ui->emailLineEdit->setText(orga->m_email);
     ui->permisBcheckBox_4->setChecked(orga->m_permis);
-    ui->confianceComboBox_4->setCurrentIndex(orga->m_categorie);
+    //ui->confianceComboBox_4->setCurrentIndex(orga->m_categorie);
     ui->notesTextEdit->setPlainText(orga->m_notes);
 
     // A valid record has been loaded : reset the colors
     resetColorOrgaForm();
 }
+
+void orgaEditWidget::setCategorie(Categorie_ptr item)
+{
+
+
+    ui->catPushButton->setText(item->m_nom);
+}
+
 
 
 void orgaEditWidget::on_okCancelOrgas_clicked(QAbstractButton* button)
