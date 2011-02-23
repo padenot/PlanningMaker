@@ -6,22 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>825</width>
-    <height>968</height>
+    <width>451</width>
+    <height>442</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout"/>
-  </widget>
+  <widget class="QWidget" name="centralWidget"/>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>825</width>
+     <width>451</width>
      <height>25</height>
     </rect>
    </property>
@@ -30,7 +28,14 @@
      <string>Fichier</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuDonn_es">
+    <property name="title">
+     <string>Données</string>
+    </property>
+    <addaction name="actionRecharger"/>
+   </widget>
    <addaction name="menuFichier"/>
+   <addaction name="menuDonn_es"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -52,7 +57,7 @@
     <string>Orgas</string>
    </property>
    <attribute name="dockWidgetArea">
-    <number>1</number>
+    <number>4</number>
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_2">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -76,6 +81,9 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
+   <property name="floating">
+    <bool>true</bool>
+   </property>
    <property name="windowTitle">
     <string>Recherche</string>
    </property>
@@ -98,13 +106,38 @@
     <number>2</number>
    </attribute>
    <widget class="QWidget" name="dockWidgetContents">
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <widget class="catEditWidget" name="catEditWidget_1" native="true">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>9</y>
+       <width>86</width>
+       <height>793</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="lieuEditDockWidget">
+   <property name="windowTitle">
+    <string>Lieux</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3">
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
-      <widget class="catEditWidget" name="catEditWidget_1" native="true"/>
+      <widget class="lieuEditWidget" name="lieuEditWidget_1" native="true"/>
      </item>
     </layout>
    </widget>
   </widget>
+  <action name="actionRecharger">
+   <property name="text">
+    <string>Recharger</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -124,6 +157,12 @@
    <class>catEditWidget</class>
    <extends>QWidget</extends>
    <header>cateditwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>lieuEditWidget</class>
+   <extends>QWidget</extends>
+   <header>lieueditwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

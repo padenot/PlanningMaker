@@ -73,6 +73,7 @@ item.m_confiance=ui->confLineEdit->text().toInt();
 void catEditWidget::resetColorForm()
 {
     ui->nomLineEdit->setStyleSheet(MainWindow::NoError);
+    ui->confLineEdit->setStyleSheet(MainWindow::NoError);
 
 }
 

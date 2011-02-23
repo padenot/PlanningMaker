@@ -19,5 +19,3 @@ template <> void register_class(QxClass<Groupetaches> & t)
 
 
 }}
-
-

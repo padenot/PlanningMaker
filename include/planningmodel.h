@@ -37,6 +37,9 @@ private:
     list_equipe equipes;
     list_lieu lieux;
 
+private slots:
+    void refreshModel();
+
 };
 
 #endif // PLANNINGMODEL_H

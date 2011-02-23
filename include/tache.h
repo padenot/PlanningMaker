@@ -12,10 +12,10 @@ class QX_PMNG_DLL_EXPORT Tache;
 typedef std::pair<QDateTime,QDateTime> plageHoraire;
 typedef std::vector<plageHoraire> List_plageHoraire;
 
-typedef std::pair<int,int> orgaNecessairesParEquipe;
+typedef std::pair<int,Equipe_ptr> orgaNecessairesParEquipe;
 typedef std::vector<orgaNecessairesParEquipe> List_orgaNecessairesParEquipe;
 
-typedef std::pair<int,int> orgaNecessairesParCategorie;
+typedef std::pair<int,Categorie_ptr> orgaNecessairesParCategorie;
 typedef std::vector<orgaNecessairesParCategorie> List_orgaNecessairesParCategorie;
 
 typedef QSharedPointer<Tache> Tache_ptr;
@@ -34,7 +34,7 @@ public:
    Groupetaches_ptr m_groupetaches;
    QString      m_nom;
    int          m_statut;
-   List_plageHoraire m_plagesHoraires;
+   plageHoraire m_plageHoraire;
    QString      m_instructions;
    QString      m_consignesSecu;
    Lieu_ptr     m_lieu;

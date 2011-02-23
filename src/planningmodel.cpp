@@ -213,3 +213,8 @@ list_lieu PlanningModel::getLieux(){
 
 }
 
+void PlanningModel::refreshModel(){
+
+    emit refresh();
+}
+

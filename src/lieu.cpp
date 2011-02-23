@@ -11,8 +11,8 @@ template <> void register_class(QxClass<Lieu> & t)
 {
    t.id(& Lieu::m_id, "lieu_id");
    t.data(& Lieu::m_nom, "nom");
-t.data(& Lieu::m_latitude, "latitude");
-t.data(& Lieu::m_longitude, "longitude");
+//t.data(& Lieu::m_latitude, "latitude");
+//t.data(& Lieu::m_longitude, "longitude");
 
 
 

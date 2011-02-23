@@ -36,6 +36,7 @@ connect(&model_, SIGNAL(refresh()), ui->catEditWidget_1, SLOT(refresh()));
 connect(ui->orgaSelectWidget_2, SIGNAL(orgaSelected(Orga_ptr)), ui->orgaEditWidget_1, SLOT(loadInPanel(Orga_ptr)));
 connect(ui->orgaSelectWidget_2, SIGNAL(orgaSelected(Orga_ptr)), this, SLOT(showOrgaEditPanel()));
 connect(ui->catEditWidget_1, SIGNAL(selected(Categorie_ptr)), ui->orgaEditWidget_1, SLOT(setCategorie(Categorie_ptr)));
+connect(ui->actionRecharger,SIGNAL(triggered()),&model_, SLOT(refreshModel()));
 
 
 }
@@ -76,15 +77,4 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-
-
-
-
-
-
-
-
-
-
 

@@ -40,7 +40,9 @@ SOURCES +=  ./src/main.cpp\
     src/orgaeditwidget.cpp \
     src/orgaselectwidget.cpp \
 src/manifeditwidget.cpp \
-src/cateditwidget.cpp
+src/lieueditwidget.cpp \
+src/cateditwidget.cpp\
+src/creneau.cpp
 
 
 HEADERS  += ./include/mainwindow.h \
@@ -58,7 +60,9 @@ HEADERS  += ./include/mainwindow.h \
     include/orgaeditwidget.h \
     include/orgaselectwidget.h \
 include/manifeditwidget.h \
-include/cateditwidget.h
+include/cateditwidget.h \
+include/lieueditwidget.h \
+include/creneau.h
 
 FORMS    += ./ui/mainwindow.ui \
     ./ui/orgalistdialog.ui \
@@ -66,6 +70,7 @@ FORMS    += ./ui/mainwindow.ui \
     ui/orgaeditwidget.ui \
     ui/orgaselectwidget.ui \
 ui/manifeditwidget.ui \
+ui/lieueditwidget.ui \
 ui/cateditwidget.ui
 
 RESOURCES += \
